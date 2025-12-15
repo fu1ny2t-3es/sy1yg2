@@ -82,6 +82,10 @@ impl ResourceCache {
         renderer: &SdlCanvas<SdlWindow>,
         name: &str,
     ) -> Rc<Background> {
+        #[cfg(target_os = "windows")]
+        let name = name.replace("/", "\\");
+        #[cfg(target_os = "windows")]
+        let name = name.as_str();
         if let Some(background) = self.backgrounds.get(name) {
             return background.clone();
         }
@@ -106,6 +110,10 @@ impl ResourceCache {
         renderer: &SdlCanvas<SdlWindow>,
         name: &str,
     ) -> Rc<Font> {
+        #[cfg(target_os = "windows")]
+        let name = name.replace("/", "\\");
+        #[cfg(target_os = "windows")]
+        let name = name.as_str();
         if let Some(font) = self.fonts.get(name) {
             return font.clone();
         }
@@ -124,6 +132,10 @@ impl ResourceCache {
         renderer: &SdlCanvas<SdlWindow>,
         name: &str,
     ) -> Vec<Sprite> {
+        #[cfg(target_os = "windows")]
+        let name = name.replace("/", "\\");
+        #[cfg(target_os = "windows")]
+        let name = name.as_str();
         if let Some(vec) = self.sprites.get(name) {
             return vec.clone();
         }
