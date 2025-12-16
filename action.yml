@@ -37,14 +37,14 @@ runs:
     working-directory: ${{ github.workspace }}
     shell: pwsh
     run: |
-      curl --no-progress-meter -L -o "sdl2.zip" https://libsdl.org/release/SDL2-devel-2.0.14-VC.zip
+      curl --no-progress-meter -L -o "sdl2.zip" https://libsdl.org/release/SDL2-devel-2.0.16-VC.zip
       unzip -q sdl2.zip
 
-      cargo rustc --release -- -L SDL2-2.0.14/lib/x64
+      cargo rustc --release -- -L SDL2-2.0.16/lib/x64
 
       # ls -R
       cp target/release/*.exe .
-      cp SDL2-2.0.14/lib/x64/*.dll .
+      cp SDL2-2.0.16/lib/x64/*.dll .
 
 
 
